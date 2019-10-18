@@ -1,0 +1,28 @@
+{
+  "name": "react-native-timezone",
+  "version": "1.0.0",
+  "description": "React Native library to extract mobile timezone",
+  "main": "index.js",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samitha9125/react-native-timezone/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samitha9125/react-native-timezone"
+  },
+  "homepage": "https://github.com/samitha9125/react-native-timezone#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Samitha9125",
+  "devDependencies": {
+    "react-native": "0.41.2"
+  },
+  "peerDependencies": {
+    "react-native": "^0.41.2"
+  }
+}
