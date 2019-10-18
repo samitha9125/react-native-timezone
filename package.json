@@ -1,6 +1,6 @@
 {
   "name": "react-native-timezone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Native library to extract mobile timezone",
   "main": "index.js",
   "license": "MIT",
