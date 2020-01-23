@@ -7,22 +7,21 @@ For a project of mine, I had to acquire the current selected timezone of the use
 # Compatibility
 | React native version | Tested | Result |
 |----------------------|--------|--------|
-| < 0.60.0             |   ❓   |   ❓   |
+| < 0.60.0             |   ✅   |   ✅   |
 | >= 0.60.0            |   ✅   |   ✅   |
-
-NOTE: Currently I've only tested this library with RN projects >= 0.60.0. If you tested this with older versions of RN, please let me know the status. 
 
 # Installation
  
- For RN version >= 0.60.0,
- 
  `npm i --save react-native-timezone`
+
+ If your React Native version is < 0.60.0,<br>`react-native link react-native-timezone`
  
  ## iOS
- `cd ios/ && pod install`
+
+ if you have cocapods installed or have react native version > 0.60.0,<br>`cd ios/ && pod install`
  
  ## Android
- Nothing else to do after npm install.
+ Nothing else to do after npm install and react-native link (if RN < 0.60.0).
  
  # Usage
  ```javascript
