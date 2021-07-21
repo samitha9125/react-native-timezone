@@ -21,7 +21,7 @@
   "author": "Samitha9125",
   "devDependencies": {
     "react": "16.13.1",
-    "react-native": "0.63.3"
+    "react-native": "0.64.1"
   },
   "peerDependencies": {
     "react": ">=16.13.1",
