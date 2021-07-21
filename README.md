@@ -12,15 +12,10 @@ For a project of mine, I had to acquire the current selected timezone of the use
 # Installation
  
  `npm i --save react-native-timezone`
-
- If your React Native version is < 0.60.0,<br>`react-native link react-native-timezone`
  
  ## iOS
 
- if you have cocapods installed or have react native version > 0.60.0,<br>`cd ios/ && pod install`
- 
- ## Android
- Nothing else to do after npm install and react-native link (if RN < 0.60.0).
+ Do `cd ios/ && pod install`. 
  
  # Usage
  ```javascript
