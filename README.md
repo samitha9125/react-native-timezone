@@ -7,8 +7,7 @@ For a project of mine, I had to acquire the current selected timezone of the use
 # Compatibility
 | React native version | Tested | Result |
 |----------------------|--------|--------|
-| < 0.60.0             |   ✅   |   ✅   |
-| >= 0.60.0            |   ✅   |   ✅   |
+| 0.63.0 +             |   ✅   |   ✅   |
 
 # Installation
  
