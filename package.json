@@ -20,11 +20,11 @@
   ],
   "author": "Samitha9125",
   "devDependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.3"
+    "react": "16.11.0", 
+    "react-native": "0.62.3"
   },
   "peerDependencies": {
-    "react": ">=16.13.1",
-    "react-native": ">=0.63.3"
+    "react": ">=16.11.0",
+    "react-native": ">=0.62.3"
   }
 }
