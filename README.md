@@ -30,7 +30,7 @@ getTimeZone = async() => {
   console.log({ timeZone });
 }
 ```
-
+Check out the [example]("https://github.com/samitha9125/react-native-timezone/tree/master/example") folder.
  # API
 | API         | Description                                                                                                                                                 |
 |-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -70,3 +70,4 @@ android/keystores/debug.keystore
 lib/
 
 *.tgz
+.DS_STORE
