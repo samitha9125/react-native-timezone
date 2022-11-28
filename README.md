@@ -5,13 +5,17 @@ A Simple react native module to get Timezone of the Android/iOS device.
 For a project of mine, I had to acquire the current selected timezone of the user. But unfortunately I could not find any react native package or react native in-build function which facilitates this. Thus I created a small library.
 
 # Compatibility
+Timezone version 2.0.0 only support React Native version 0.62.3 and above due to React Native Regular Expression Denial of Service (ReDoS) vulnerability.
+
 | React native version | Tested | Result |
 |----------------------|--------|--------|
-| 0.63.0 +             |   ✅   |   ✅   |
+| 0.62.3 +             |   ✅   |   ✅   |
+| 0.62.5 +             |   ✅   |   ✅   |
+| 0.70.5 +             |   ✅   |   ✅   |
 
 # Installation
  
- `npm i --save react-native-timezone`
+ `npm i react-native-timezone`
  
  ## iOS
 
