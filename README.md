@@ -1,4 +1,6 @@
 # React Native Timezone
+[![Maintainability](https://api.codeclimate.com/v1/badges/3713253a365fe6a55615/maintainability)](https://codeclimate.com/github/samitha9125/react-native-timezone/maintainability)
+
 A Simple react native module to get Timezone of the Android/iOS device.
 
 # Motivation
@@ -11,7 +13,7 @@ Timezone version 2.0.0 only support React Native version 0.62.3 and above due to
 |----------------------|--------|--------|
 | 0.62.3 +             |   ✅   |   ✅   |
 | 0.62.5 +             |   ✅   |   ✅   |
-| 0.70.5 +             |   ✅   |   ✅   |
+| 0.71.3 +             |   ✅   |   ✅   |
 
 # Installation
  
