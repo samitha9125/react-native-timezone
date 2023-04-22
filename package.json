@@ -1,6 +1,6 @@
 {
   "name": "react-native-timezone",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A Simple react native module to get Timezone of the Android/iOS device.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
