@@ -13,7 +13,7 @@ Timezone version 2.0.0 only support React Native version 0.62.3 and above due to
 |----------------------|--------|--------|
 | 0.62.3 +             |   ✅   |   ✅   |
 | 0.62.5 +             |   ✅   |   ✅   |
-| 0.71.3 +             |   ✅   |   ✅   |
+| 0.71.7 +             |   ✅   |   ✅   |
 
 # Installation
  
