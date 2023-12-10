@@ -1,18 +1,39 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-timezone';
+import Timezone from 'react-native-timezone';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState({
+    timezone: '',
+    isAutoTimeZoneEnabled: false,
+    telephonyRegion: '',
+    localeRegion: '',
+  });
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    const timezone = Timezone.getTimeZone();
+    const isAutoTimeZoneEnabled = Timezone.isAutoTimeZoneEnabled();
+    const telephonyRegion = Timezone.getRegionByTelephony();
+    const localeRegion = Timezone.getRegionByLocale();
+    setResult({
+      timezone,
+      isAutoTimeZoneEnabled,
+      telephonyRegion,
+      localeRegion,
+    });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Current Timezone is {result.timezone}</Text>
+      <Text>
+        Is Auto Timezone Enabled? {String(result.isAutoTimeZoneEnabled)}
+      </Text>
+      <Text>
+        Region obtained by SIM card is {String(result.telephonyRegion)}
+      </Text>
+      <Text>Region obtained by Locale is {result.localeRegion}</Text>
     </View>
   );
 }

@@ -38,7 +38,7 @@ def supportsNamespace() {
 
 android {
   if (supportsNamespace()) {
-    namespace "com.timezone"
+    namespace "com.samitha.rn.timezone"
 
     sourceSets {
       main {
@@ -107,6 +107,6 @@ if (isNewArchitectureEnabled()) {
   react {
     jsRootDir = file("../src/")
     libraryName = "Timezone"
-    codegenJavaPackageName = "com.timezone"
+    codegenJavaPackageName = "com.samitha.rn.timezone"
   }
 }

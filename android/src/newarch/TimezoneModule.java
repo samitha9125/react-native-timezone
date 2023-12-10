@@ -1,4 +1,4 @@
-package com.timezone;
+package com.samitha.rn.timezone;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 

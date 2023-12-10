@@ -1,7 +1,7 @@
 {
   "name": "react-native-timezone",
-  "version": "0.1.0",
-  "description": "A Simple react native module to get Timezone and Region of the Android/iOS device.",
+  "version": "3.0.0",
+  "description": "A Simple react native module to get Timezone and Region of the Android/iOS devices.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",

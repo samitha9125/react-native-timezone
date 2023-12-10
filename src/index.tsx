@@ -8,7 +8,6 @@ const LINKING_ERROR =
 
 // @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
-
 const TimezoneModule = isTurboModuleEnabled
   ? require('./NativeTimezone').default
   : NativeModules.Timezone;
@@ -24,6 +23,14 @@ const Timezone = TimezoneModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Timezone.multiply(a, b);
-}
+export default {
+  getTimeZone: () => Timezone.getTimeZone(),
+  getRegionByLocale: () => Timezone.getRegionByLocale(),
+  getRegionByTelephony: () => Timezone.getRegionByTelephony() ?? undefined,
+  isAutoTimeZoneEnabled: () => {
+    if (Platform.OS === 'android') {
+      return Timezone.isAutoTimeZoneEnabled();
+    }
+    return undefined;
+  },
+};

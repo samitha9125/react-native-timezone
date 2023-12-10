@@ -14,6 +14,9 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "11.0" }
   s.source       = { :git => "https://github.com/samitha9125/react-native-timezone.git", :tag => "#{s.version}" }
 
+  # Frameworks to include in the project.
+  s.frameworks   = 'CoreTelephony'
+
   s.source_files = "ios/**/*.{h,m,mm}"
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.

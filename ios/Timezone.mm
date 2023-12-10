@@ -1,18 +1,35 @@
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 #import "Timezone.h"
 
 @implementation Timezone
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_EXPORT_METHOD(multiply:(double)a
-                  b:(double)b
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
+// Get the current timezone using NSTimeZone
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getTimeZone)
 {
-    NSNumber *result = @(a * b);
+    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    return timeZone.name;
+}
 
-    resolve(result);
+// Get the current timezone using CTTelephonyNetworkInfo
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getRegionByTelephony)
+{
+    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
+    CTCarrier *carrier = [networkInfo subscriberCellularProvider];
+    NSString *isoCountryCode = [carrier isoCountryCode];
+    if (isoCountryCode == nil || [isoCountryCode isEqualToString:@""]) {
+        return nil;
+    }
+    return isoCountryCode;
+}
+
+// Get the current timezone using NSLocale
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getRegionByLocale)
+{
+    NSLocale *locale = [NSLocale currentLocale];
+    NSString *countryCode = [locale objectForKey:NSLocaleCountryCode];
+    return countryCode;
 }
 
 // Don't compile this code when we build for the old architecture.
