@@ -2,16 +2,17 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/3713253a365fe6a55615/maintainability)](https://codeclimate.com/github/samitha9125/react-native-timezone/maintainability)
 
-A Simple react native module to get Timezone and the Region of the Android/iOS devices.
+A Simple react native module to get the Timezone and the Region of the Android/iOS devices.
 
 # Motivation
 
-For a project of mine, I had to acquire the current selected timezone of the user. But unfortunately I could not find any react native package or react native in-build function which facilitates this. Thus I created a small library.
-Also, in v3.0.0 and above, you can access the Region details. More details can be found below.
+For a project of mine, I had to acquire the currently selected timezone of the user. Unfortunately, I could not find any react native package or react native in-build function that facilitates this. Thus I created a small library.
+
+v3.0.0 and above, you can access the Region details. More details can be found below.
 
 # Compatibility
 
-Timezone version 3.0.0 only supports React Native version 0.62.3 and above due to React Native Regular Expression Denial of Service (ReDoS) vulnerability.
+Timezone version 3.0.0 only supports React Native version 0.62.3 and above due to the React Native Regular Expression Denial of Service (ReDoS) vulnerability.
 
 | React native version | Tested | Result |
 | -------------------- | ------ | ------ |
@@ -25,7 +26,7 @@ Timezone version 3.0.0 only supports React Native version 0.62.3 and above due t
 
 ## iOS
 
-Do `cd ios/ && pod install`.
+Do `cd ios/ && pod install` or `npx pod-install`.
 
 # Usage
 
@@ -45,11 +46,9 @@ export default function App() {
 }
 ```
 
-Check out the [example]("https://github.com/samitha9125/react-native-timezone/tree/master/example") folder.
+Check out the [example](https://github.com/samitha9125/react-native-timezone/tree/master/example) folder.
 
 # APIs
-
-# API
 
 | API                   | Description                                                                                                                                         |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
