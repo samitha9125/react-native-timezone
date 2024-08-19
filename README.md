@@ -31,7 +31,7 @@ Do `cd ios/ && pod install` or `npx pod-install`.
 # Usage
 
 ```javascript
-import TimeZone from 'react-native-timezone';
+import Timezone from 'react-native-timezone';
 
 export default function App() {
   React.useEffect(() => {
