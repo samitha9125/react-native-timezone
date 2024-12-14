@@ -191,7 +191,7 @@
       "android": "android/generated"
     },
     "android": {
-      "javaPackageName": "com.timezone"
+      "javaPackageName": "com.samitha.timezone"
     },
     "includesGeneratedCode": true
   },
