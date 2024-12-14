@@ -1,4 +1,4 @@
-package com.timezone
+package com.samitha.timezone
 
 import com.facebook.react.BaseReactPackage
 import com.facebook.react.bridge.NativeModule
