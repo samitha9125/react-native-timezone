@@ -87,6 +87,32 @@
     "example"
   ],
   "packageManager": "yarn@3.6.1",
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "codegen",
+      [
+        "commonjs",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json",
+          "esm": true
+        }
+      ]
+    ]
+  },
   "codegenConfig": {
     "name": "RNTimezoneSpec",
     "type": "modules",
