@@ -51,6 +51,10 @@
   },
   "author": "Samitha Nanayakkara <samithananayakkara@gmail.com> (https://samithananayakkara.com)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samitha9125/react-native-timezone/issues"
+  },
+  "homepage": "https://github.com/samitha9125/react-native-timezone#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -125,5 +129,10 @@
       "javaPackageName": "com.samitha.timezone"
     },
     "includesGeneratedCode": true
+  },
+  "create-react-native-library": {
+    "type": "turbo-module",
+    "languages": "kotlin-objc",
+    "version": "0.45.5"
   }
 }
