@@ -22,7 +22,7 @@ Timezone version 3.0.0 only supports React Native version 0.62.3 and above due t
 
 # Installation
 
-`npm i react-native-timezone`
+`yarn add react-native-timezone`
 
 ## iOS
 
@@ -54,5 +54,5 @@ Check out the [example](https://github.com/samitha9125/react-native-timezone/tre
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | getTimeZone           | Android: Returns timezone ID using `java.util.TimeZone.getID()`<br>iOS: Reflects the current system time zone using `localTimeZone` of `NSTimeZone` |
 | isAutoTimeZoneEnabled | Returns a boolean indicating if auto timezone is enabled on the device **(Android Only)**                                                           |
-| getRegionByTelephony  | Retrieves the region information based on the telephony (SIM card) of the device. Returns `undefined` if the device has no SIM card.                |
+| getRegionByTelephony  | Retrieves the region information based on the telephony (SIM card) of the device. Returns `null` if the device has no SIM card.                     |
 | getRegionByLocale     | Retrieves the region information based on the device's locale settings                                                                              |

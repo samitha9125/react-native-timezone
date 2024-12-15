@@ -5,6 +5,15 @@
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
+  "scripts": {
+    "example": "yarn workspace react-native-timezone-example",
+    "test": "jest",
+    "typecheck": "tsc",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
+    "prepare": "bob build",
+    "release": "release-it"
+  },
   "exports": {
     ".": {
       "import": {
@@ -36,30 +45,12 @@
     "!**/__mocks__",
     "!**/.*"
   ],
-  "scripts": {
-    "example": "yarn workspace react-native-timezone-example",
-    "test": "jest",
-    "typecheck": "tsc",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "prepare": "bob build",
-    "release": "release-it"
-  },
-  "keywords": [
-    "react-native",
-    "ios",
-    "android"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/samitha9125/react-native-timezone.git"
   },
   "author": "Samitha Nanayakkara <samithananayakkara@gmail.com> (https://samithananayakkara.com)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/samitha9125/react-native-timezone/issues"
-  },
-  "homepage": "https://github.com/samitha9125/react-native-timezone#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -96,88 +87,6 @@
     "example"
   ],
   "packageManager": "yarn@3.6.1",
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}",
-      "requireBranch": "main"
-    },
-    "npm": {
-      "publish": true
-    },
-    "github": {
-      "release": true
-    }
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@react-native",
-      "prettier"
-    ],
-    "rules": {
-      "react/react-in-jsx-scope": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "singleQuote": true,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      "codegen",
-      [
-        "commonjs",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "module",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "esm": true
-        }
-      ]
-    ]
-  },
   "codegenConfig": {
     "name": "RNTimezoneSpec",
     "type": "modules",
@@ -190,10 +99,5 @@
       "javaPackageName": "com.samitha.timezone"
     },
     "includesGeneratedCode": true
-  },
-  "create-react-native-library": {
-    "type": "turbo-module",
-    "languages": "kotlin-objc",
-    "version": "0.45.5"
   }
 }

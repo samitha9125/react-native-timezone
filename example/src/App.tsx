@@ -9,6 +9,7 @@ type Result = {
   telephonyRegion: string | null;
   localeRegion: string | null;
 };
+
 export default function App() {
   const [result, setResult] = useState<Result>({
     timezone: '',
