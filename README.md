@@ -1,7 +1,5 @@
 # React Native Timezone and Region
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/3713253a365fe6a55615/maintainability)](https://codeclimate.com/github/samitha9125/react-native-timezone/maintainability)
-
 A Simple react native module to get the Timezone and the Region of the Android/iOS devices.
 
 # Why Choose This Library?
