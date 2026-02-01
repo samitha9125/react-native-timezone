@@ -1,6 +1,7 @@
 package com.samitha.timezone
 
 import android.content.ContentResolver
+import android.content.Context
 import android.os.Build
 import android.provider.Settings
 import android.telephony.TelephonyManager
@@ -54,7 +55,7 @@ class TimezoneModule(reactContext: ReactApplicationContext) :
   @ReactMethod(isBlockingSynchronousMethod = true)
   override fun getRegionByTelephony(): String? {
     return try {
-      val telephonyService = reactApplicationContext.getSystemService(ReactApplicationContext.TELEPHONY_SERVICE) as? TelephonyManager
+      val telephonyService = reactApplicationContext.getSystemService(Context.TELEPHONY_SERVICE) as? TelephonyManager
       telephonyService?.networkCountryIso
     } catch (e: Exception) {
       null
