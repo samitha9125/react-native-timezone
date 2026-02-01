@@ -1242,7 +1242,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-timezone (3.1.0):
+  - react-native-timezone (3.2.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1772,7 +1772,7 @@ SPEC CHECKSUMS:
   React-logger: 697873f06b8ba436e3cddf28018ab4741e8071b6
   React-Mapbuffer: c174e11bdea12dce07df8669d6c0dc97eb0c7706
   React-microtasksnativemodule: 8a80099ad7391f4e13a48b12796d96680f120dc6
-  react-native-timezone: a3003b90afb4d6a489c30f2ce9a4a127096c28a8
+  react-native-timezone: cf07259c8a66b4b754ecc6a57de98f377ac984d2
   React-nativeconfig: f7ab6c152e780b99a8c17448f2d99cf5f69a2311
   React-NativeModulesApple: 70600f7edfc2c2a01e39ab13a20fd59f4c60df0b
   React-perflogger: ceb97dd4e5ca6ff20eebb5a6f9e00312dcdea872
