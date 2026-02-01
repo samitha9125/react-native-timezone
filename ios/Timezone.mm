@@ -3,7 +3,7 @@
 #import "Timezone.h"
 
 @implementation Timezone
-    RCT_EXPORT_MODULE('Timezone');
+    RCT_EXPORT_MODULE(Timezone);
     /**
     * This is a Synchronous method.
     * Retrieves the current time zone name.
@@ -17,15 +17,48 @@
     /**
     * Synchronous method.
     * Gets the region based on the telephony manager's network country ISO.
+    *
+    * ⚠️ DEPRECATION NOTICE:
+    * - subscriberCellularProvider: Deprecated iOS 12+
+    * - serviceSubscriberCellularProviders: Deprecated iOS 16+
+    * - CTCarrier class: Deprecated iOS 16+ with NO REPLACEMENT
+    *
+    * Starting iOS 18, these APIs return nil due to privacy restrictions.
+    * Apple has intentionally removed carrier info access with no alternative.
+    * Consider using getRegionByLocale() as a fallback.
     */
     RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getRegionByTelephony)
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        
         CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-        CTCarrier *carrier = [networkInfo subscriberCellularProvider];
-        NSString *isoCountryCode = [carrier isoCountryCode];
+        NSString *isoCountryCode = nil;
+        
+        // iOS 12+: Check all cellular providers (multi-SIM support)
+        if (@available(iOS 12.0, *)) {
+            NSDictionary *carriers = [networkInfo serviceSubscriberCellularProviders];
+            
+            if (carriers && carriers.count > 0) {
+                // Get the first available carrier's country code
+                CTCarrier *carrier = [carriers.allValues firstObject];
+                isoCountryCode = [carrier isoCountryCode];
+            }
+        }
+        
+        // Fallback for iOS < 12 OR if iOS 12+ returns nothing
+        if (isoCountryCode == nil || [isoCountryCode isEqualToString:@""]) {
+            CTCarrier *carrier = [networkInfo subscriberCellularProvider];
+            isoCountryCode = [carrier isoCountryCode];
+        }
+        
+#pragma clang diagnostic pop
+        
+        // iOS 18+: Will likely return nil due to privacy restrictions
         if (isoCountryCode == nil || [isoCountryCode isEqualToString:@""]) {
             return nil;
         }
+        
         return isoCountryCode;
     }
 
