@@ -1,12 +1,12 @@
 {
   "name": "react-native-timezone",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "A Simple react native module to get Timezone and Region of the Android/iOS devices.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "scripts": {
-    "example": "yarn workspace react-native-timezone-example",
+    "example": "pnpm --filter react-native-timezone-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -31,7 +31,6 @@
     "lib",
     "android",
     "ios",
-    "cpp",
     "*.podspec",
     "react-native.config.js",
     "!ios/build",
@@ -84,13 +83,10 @@
     "@types/react": "^18.2.44"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react": ">=18.0.0",
+    "react-native": ">=0.71.0"
   },
-  "workspaces": [
-    "example"
-  ],
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "pnpm@9.15.4",
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
