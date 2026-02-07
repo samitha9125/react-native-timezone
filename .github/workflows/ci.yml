@@ -92,6 +92,7 @@ jobs:
         env:
           JAVA_OPTS: '-XX:MaxHeapSize=6g'
         run: |
+          yarn prepare
           yarn turbo run build:android --cache-dir="${{ env.TURBO_CACHE_DIR }}"
 
   build-ios:
@@ -142,4 +143,5 @@ jobs:
 
       - name: Build example for iOS
         run: |
+          yarn prepare
           yarn turbo run build:ios --cache-dir="${{ env.TURBO_CACHE_DIR }}"
