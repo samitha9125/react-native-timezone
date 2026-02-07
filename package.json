@@ -6,7 +6,7 @@
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "scripts": {
-    "example": "pnpm --filter react-native-timezone-example",
+    "example": "yarn workspace react-native-timezone-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -14,6 +14,9 @@
     "prepare": "bob build",
     "release": "release-it"
   },
+  "workspaces": [
+    "example"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -86,7 +89,6 @@
     "react": ">=18.0.0",
     "react-native": ">=0.71.0"
   },
-  "packageManager": "pnpm@9.15.4",
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
