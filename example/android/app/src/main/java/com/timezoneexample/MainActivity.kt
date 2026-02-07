@@ -1,4 +1,4 @@
-package timezone.example
+package com.timezoneexample
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

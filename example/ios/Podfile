@@ -1,3 +1,4 @@
+# Enable New Architecture
 ENV['RCT_NEW_ARCH_ENABLED'] = '1'
 
 # Resolve react_native_pods.rb with node to allow for hoisting
@@ -25,13 +26,8 @@ target 'TimezoneExample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'TimezoneExampleTests' do
-    inherit! :complete
-    # Pods for testing
-  end
-
-
   pre_install do |installer|
+    # Build codegen before pod install
     system("cd ../../ && npx bob build --target codegen")
   end
 
