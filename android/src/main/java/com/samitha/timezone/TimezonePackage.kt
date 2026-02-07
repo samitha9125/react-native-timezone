@@ -19,15 +19,18 @@ class TimezonePackage : BaseReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      moduleInfos[TimezoneModule.NAME] = ReactModuleInfo(
+      // Keep the legacy constructor for backwards compatibility with older RN versions.
+      @Suppress("DEPRECATION")
+      val timezoneModuleInfo = ReactModuleInfo(
         TimezoneModule.NAME,
         TimezoneModule.NAME,
         false,  // canOverrideExistingModule
         false,  // needsEagerInit
-        true,  // hasConstants
+        false,  // hasConstants
         false,  // isCxxModule
         true // isTurboModule
       )
+      moduleInfos[TimezoneModule.NAME] = timezoneModuleInfo
       moduleInfos
     }
   }

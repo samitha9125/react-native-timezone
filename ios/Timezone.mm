@@ -2,8 +2,27 @@
 #import <CoreTelephony/CTCarrier.h>
 #import "Timezone.h"
 
+static NSString *NormalizeCountryCode(NSString *countryCode) {
+    if (countryCode == nil) {
+        return nil;
+    }
+
+    NSString *trimmed = [countryCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (trimmed.length == 0) {
+        return nil;
+    }
+
+    return [trimmed uppercaseStringWithLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+}
+
 @implementation Timezone
-    RCT_EXPORT_MODULE(Timezone);
+
++ (BOOL)requiresMainQueueSetup
+{
+    return NO;
+}
+
+RCT_EXPORT_MODULE();
     /**
     * This is a Synchronous method.
     * Retrieves the current time zone name.
@@ -16,7 +35,8 @@
 
     /**
     * Synchronous method.
-    * Gets the region based on the telephony manager's network country ISO.
+    * Gets the best current region based on telephony data.
+    * Prefers the active data service carrier when available.
     *
     * ⚠️ DEPRECATION NOTICE:
     * - subscriberCellularProvider: Deprecated iOS 12+
@@ -37,17 +57,35 @@
         
         // iOS 12+: Check all cellular providers (multi-SIM support)
         if (@available(iOS 12.0, *)) {
-            NSDictionary *carriers = [networkInfo serviceSubscriberCellularProviders];
+            NSDictionary<NSString *, CTCarrier *> *carriers = [networkInfo serviceSubscriberCellularProviders];
             
             if (carriers && carriers.count > 0) {
-                // Get the first available carrier's country code
-                CTCarrier *carrier = [carriers.allValues firstObject];
-                isoCountryCode = [carrier isoCountryCode];
+                // Prefer the active data service carrier when available (iOS 13+).
+                if (@available(iOS 13.0, *)) {
+                    NSString *activeServiceIdentifier = networkInfo.dataServiceIdentifier;
+                    if (activeServiceIdentifier != nil) {
+                        CTCarrier *activeCarrier = carriers[activeServiceIdentifier];
+                        isoCountryCode = [activeCarrier isoCountryCode];
+                    }
+                }
+
+                // Fallback: deterministically scan all carriers until a non-empty code is found.
+                if (NormalizeCountryCode(isoCountryCode) == nil) {
+                    NSArray<NSString *> *serviceIdentifiers = [[carriers allKeys] sortedArrayUsingSelector:@selector(compare:)];
+                    for (NSString *serviceIdentifier in serviceIdentifiers) {
+                        CTCarrier *carrier = carriers[serviceIdentifier];
+                        NSString *candidateCountryCode = [carrier isoCountryCode];
+                        if (NormalizeCountryCode(candidateCountryCode) != nil) {
+                            isoCountryCode = candidateCountryCode;
+                            break;
+                        }
+                    }
+                }
             }
         }
         
         // Fallback for iOS < 12 OR if iOS 12+ returns nothing
-        if (isoCountryCode == nil || [isoCountryCode isEqualToString:@""]) {
+        if (NormalizeCountryCode(isoCountryCode) == nil) {
             CTCarrier *carrier = [networkInfo subscriberCellularProvider];
             isoCountryCode = [carrier isoCountryCode];
         }
@@ -55,11 +93,12 @@
 #pragma clang diagnostic pop
         
         // iOS 18+: Will likely return nil due to privacy restrictions
-        if (isoCountryCode == nil || [isoCountryCode isEqualToString:@""]) {
+        NSString *normalizedCountryCode = NormalizeCountryCode(isoCountryCode);
+        if (normalizedCountryCode == nil) {
             return nil;
         }
         
-        return isoCountryCode;
+        return normalizedCountryCode;
     }
 
     /**
@@ -70,7 +109,19 @@
     {
         NSLocale *locale = [NSLocale currentLocale];
         NSString *countryCode = [locale objectForKey:NSLocaleCountryCode];
-        return countryCode;
+        return NormalizeCountryCode(countryCode);
+    }
+
+    /**
+    * Synchronous method.
+    * Checks if automatic time zone is enabled on the device.
+    * Note: iOS doesn't provide a direct API for this, so we return nil.
+    */
+    RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(isAutoTimeZoneEnabled)
+    {
+        // iOS doesn't provide a public API to check if automatic time zone is enabled
+        // This feature is primarily available on Android
+        return nil;
     }
 
     - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:

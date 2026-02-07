@@ -8,6 +8,7 @@ import android.telephony.TelephonyManager
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.module.annotations.ReactModule
+import java.util.Locale
 import java.util.TimeZone
 
 @ReactModule(name = TimezoneModule.NAME)
@@ -50,13 +51,15 @@ class TimezoneModule(reactContext: ReactApplicationContext) :
 
   /**
    * Synchronous method.
-   * Gets the region based on the telephony manager's network country ISO.
+   * Gets the best current region based on telephony data.
+   * Prefers current network country, then falls back to SIM country.
    */
   @ReactMethod(isBlockingSynchronousMethod = true)
   override fun getRegionByTelephony(): String? {
     return try {
       val telephonyService = reactApplicationContext.getSystemService(Context.TELEPHONY_SERVICE) as? TelephonyManager
-      telephonyService?.networkCountryIso
+      val networkCountryIso = normalizeCountryCode(telephonyService?.networkCountryIso)
+      networkCountryIso ?: normalizeCountryCode(telephonyService?.simCountryIso)
     } catch (e: Exception) {
       null
     }
@@ -75,10 +78,15 @@ class TimezoneModule(reactContext: ReactApplicationContext) :
       } else {
         configuration.locale
       }
-      locale.country
+      normalizeCountryCode(locale.country)
     } catch (e: Exception) {
       null
     }
+  }
+
+  private fun normalizeCountryCode(countryCode: String?): String? {
+    val normalized = countryCode?.trim()?.uppercase(Locale.ROOT)
+    return if (normalized.isNullOrEmpty()) null else normalized
   }
 
   companion object {
